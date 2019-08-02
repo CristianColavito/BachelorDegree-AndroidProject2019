@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize">35sp</dimen>
+    <dimen name="textSizep">33sp</dimen>
+    <dimen name="textSizelist">25sp</dimen>
+    <dimen name="textSizeserc">25sp</dimen>
+    <dimen name="textTimer">110dp</dimen>
+</resources>

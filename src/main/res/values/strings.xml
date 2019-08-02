@@ -1,0 +1,28 @@
+<resources>
+    <!-- manifest-->
+    <string name="app_name">GYMMY</string>
+    <!-- Ibride-->
+    <string name="ok">ok</string> <!-- insertActivity,timerActivity -->
+    <string name="annulla">Annulla</string> <!-- insertActivity,insert_xml -->
+    <string name="save">Save</string><!-- dialog_template-->
+    <string name="cancel">Cancel</string><!-- dialog_template-->
+    <string name="completa">Compila Tutti i Campi </string><!-- insertActivity,mainActivity -->
+    <string name="title_errore">Errore Di Inserimento</string><!-- insertActivity,mainActivity -->
+    <!-- content_main-->
+    <string name="content_main_vuote">Non Ci Sono Schede</string>
+    <!-- dialog_template-->
+    <string name="dialog_template_write">Scrivi il nome del tuo allenamento</string>
+    <!-- insert_xml-->
+    <string name="work_out">TextView</string>
+    <string name="save_exercise">Inizia Scheda</string>
+    <!-- insertActivity -->
+    <string name="insert_virgola">Non puoi Inserire ,</string>
+    <string name="insert_punti">Non puoi Inserire ;</string>
+    <!-- fragment -->
+    <string name="fragment_rec">Secondi Di Recupero</string>
+    <string name="fragment_rip">Ripetizioni</string>
+    <string name="fragment_nome">Nome Esercizio</string>
+    <!-- timerActivity -->
+    <string name="timer_fine_title">Fine Allenamento</string>
+    <string name="timer_fine_message">Congratulazioni Hai Terminato Il Tuo Allenamento</string>
+</resources>
