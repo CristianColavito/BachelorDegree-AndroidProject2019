@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextRec"
         android:layout_width="199dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
@@ -21,7 +21,7 @@
         tools:targetApi="o" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextRip"
         android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="230dp"

@@ -8,9 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.example.gymmyapplication.R;
 
@@ -23,8 +21,8 @@ public class Exercise_Fragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment, container, false);
         editEserc=v.findViewById(R.id.editTextnome);
-        editRec=v.findViewById(R.id.editText);
-        editRip=v.findViewById(R.id.editText2);
+        editRec=v.findViewById(R.id.editTextRec);
+        editRip=v.findViewById(R.id.editTextRip);
         editEserc.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
