@@ -108,53 +108,56 @@ public class InsertActivity extends AppCompatActivity {
                 }
             }
         });
+
+       /* public int Contr(int i){
+            int contrRec=convertInt(listafragment.get(i).rec);
+
+        }*/
         btnsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                flag=true;
                 ArrayList<Esercizio> ListaEsercizi = new ArrayList<>();
                 for (int i=0;i<listafragment.size();i++) {
-                    if (listafragment.get(i).rip == null || listafragment.get(i).rec == null)
-                    {
+                    if (listafragment.get(i).rip.isEmpty()) {//isEmpty non mi va
+                        errore(3);
+                        flag = false;
+                        break;
+                    }
+                    if (listafragment.get(i).rec.isEmpty()) {
+                        errore(3);
                         flag=false;
-                        {//DIALOG COMPILA CAMPI
-                            new AlertDialog.Builder (InsertActivity.this)
-                                    .setTitle(R.string.title_errore)
-                                    .setMessage(R.string.completa)
-                                    .setNeutralButton (R.string.ok , new AlertDialog.OnClickListener()
-                                    {
-                                        public void onClick(DialogInterface dialog , int which){
-
-                                        }
-                                    })
-                                    .create()
-                                    .show();
-                        }
+                        break;
+                    }
+                    else if (listafragment.get(i).eserc.isEmpty()){
+                        listafragment.get(i).eserc="Esercizio Generico";
                     }
                     else if(controllaPunti(i)==1)//ho messo ;
                     {
                         errore(flagPunti);
+                        break;
                     }
                     else if(controllaPunti(i)==2)//ho messo ,
                     {
                         errore(flagPunti);
+                        break;
                     }
-                    else if(controllaPunti(i)==0)
+                    else
                     {
                         ripetizioni = convertInt(listafragment.get(i).rip);
                         recupero = convertInt(listafragment.get(i).rec);
                         esercizio = listafragment.get(i).eserc;
-                        if (esercizio.length()== 0)
-                            esercizio = "Esercizio Generico";
                         Esercizio new_esercizio = new Esercizio(esercizio, ripetizioni, recupero);
                         ListaEsercizi.add(new_esercizio);
                     }
+
                 }
                 if(flag==true){
                     db.insertScheda(s, ListaEsercizi);
                     SharedPrefesSAVE(s);
                     launchTimer(v,s);
                 }
-                flag=true;//controlla da qua se va bene o se bisogna metterlo sopra
+
 
             }
         });
@@ -171,7 +174,10 @@ public class InsertActivity extends AppCompatActivity {
             {
                 myallert.setMessage(R.string.insert_virgola);
             }
-
+            else if(a==3)
+            {
+                myallert.setMessage((R.string.completa));
+            }
             myallert.setNeutralButton (R.string.ok , new AlertDialog.OnClickListener()
             {
                 public void onClick(DialogInterface dialog , int which){
@@ -200,17 +206,12 @@ public class InsertActivity extends AppCompatActivity {
         prefEDIT.commit();
     }
     public int controllaPunti(int i){
-        if(listafragment.get(i).eserc.length()==0)
-            return flagPunti=0;
-        else
-        {
-            for(int indice=0;indice<listafragment.get(i).eserc.length();indice++){
-                if (listafragment.get(i).eserc.charAt(indice)==';'){
-                    return flagPunti=1;
-                }
-                if(listafragment.get(i).eserc.charAt(indice)==','){
-                    return flagPunti=2;
-                }
+        for(int indice=0;indice<listafragment.get(i).eserc.length();indice++){
+            if (listafragment.get(i).eserc.charAt(indice)==';'){
+                return flagPunti=1;
+            }
+            if(listafragment.get(i).eserc.charAt(indice)==','){
+                return flagPunti=2;
             }
         }
         return flagPunti=0;

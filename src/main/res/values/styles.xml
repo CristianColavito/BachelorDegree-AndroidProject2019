@@ -9,21 +9,8 @@
         <!-- <item name="android:fontFamily"></item>
           <item name="colorSecondaryLight">@color/colorSecondaryLight</item> -->
         <!-- <item name="colorSecondaryDark">@color/colorSecondaryDark</item> -->
-        <item name="android:fontFamily">@font/eczar</item>
+        <item name="android:fontFamily">@font/airbnbcerealbook</item>
     </style>
 
-    <!--   <style name="Widget.AppCompat.Toolbar." parent="Widget.AppCompat.Toolbar">
-           <item name="android:background">?attr/colorAccent</item>
-           <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-           <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-       </style>
-        Base application theme.
-       <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-           <!- Customize your theme here.
-           <item name="colorPrimary">@color/colorAccent</item>
-           <item name="colorPrimaryDark">@color/colorBackgroundDark</item>
-           <item name="colorAccent">@color/colorBackgroundDark</item>
-           <item name="android:colorBackground">@color/colorBackgroundLight</item>
-       </style>-->
 
 </resources>
