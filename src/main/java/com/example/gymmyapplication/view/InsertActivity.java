@@ -119,19 +119,17 @@ public class InsertActivity extends AppCompatActivity {
                 flag=true;
                 ArrayList<Esercizio> ListaEsercizi = new ArrayList<>();
                 for (int i=0;i<listafragment.size();i++) {
-                    if (listafragment.get(i).rip.isEmpty()) {//isEmpty non mi va
+                    if (listafragment.get(i).rip ==null||listafragment.get(i).rec.isEmpty()) {//isEmpty non mi va
                         errore(3);
                         flag = false;
                         break;
                     }
-                    if (listafragment.get(i).rec.isEmpty()) {
+                    if (listafragment.get(i).rec ==null|| listafragment.get(i).rec.isEmpty()) {
                         errore(3);
                         flag=false;
                         break;
                     }
-                    else if (listafragment.get(i).eserc.isEmpty()){
-                        listafragment.get(i).eserc="Esercizio Generico";
-                    }
+
                     else if(controllaPunti(i)==1)//ho messo ;
                     {
                         errore(flagPunti);
@@ -144,6 +142,8 @@ public class InsertActivity extends AppCompatActivity {
                     }
                     else
                     {
+                        if (listafragment.get(i).eserc == null|| listafragment.get(i).eserc.isEmpty())
+                            listafragment.get(i).eserc="Esercizio Generico";
                         ripetizioni = convertInt(listafragment.get(i).rip);
                         recupero = convertInt(listafragment.get(i).rec);
                         esercizio = listafragment.get(i).eserc;
@@ -178,14 +178,7 @@ public class InsertActivity extends AppCompatActivity {
             {
                 myallert.setMessage((R.string.completa));
             }
-            myallert.setNeutralButton (R.string.ok , new AlertDialog.OnClickListener()
-            {
-                public void onClick(DialogInterface dialog , int which){
-
-                }
-            })
-                    .create()
-                    .show();
+            myallert.show();
             flagPunti=0;
             flag=false;
         }
@@ -206,6 +199,8 @@ public class InsertActivity extends AppCompatActivity {
         prefEDIT.commit();
     }
     public int controllaPunti(int i){
+        if (listafragment.get(i).eserc ==null || listafragment.get(i).eserc.isEmpty())
+            return flagPunti=0;
         for(int indice=0;indice<listafragment.get(i).eserc.length();indice++){
             if (listafragment.get(i).eserc.charAt(indice)==';'){
                 return flagPunti=1;

@@ -11,14 +11,39 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView3"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Schede:"
-            android:textSize="@android:dimen/app_icon_size" />
+            android:layout_height="wrap_content">
 
-        <include layout="@layout/activity_content_main" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginEnd="100px"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:text="Schede:"
+                android:textSize="@dimen/textSizeserc"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btinfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-100px"
+                android:background="@drawable/circle_shape_mobile"
+                app:srcCompat="@drawable/ic_info" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <include layout="@layout/activity_content_main" />
+        </TableRow>
 
     </LinearLayout>
 
@@ -29,5 +54,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_add_black_24dp" />
+
 
 </android.support.design.widget.CoordinatorLayout>

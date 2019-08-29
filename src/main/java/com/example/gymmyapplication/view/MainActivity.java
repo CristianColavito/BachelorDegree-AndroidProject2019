@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,21 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
     private Dialog ThisDialog;
     private TextView Myname;
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_info,menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.menuFile:
-                Toast.makeText(this,"Tappa per iniziare l'allenamento \nTieni premuto per cancellare",Toast.LENGTH_LONG).show();
-                break;
-        }
-        return true;
-    }
+    //Toast.makeText(this,"Tap per iniziare l'allenamento \nTenere premuto per cancellare",Toast.LENGTH_LONG).show();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         schedaList.addAll(db.getAllSchede());
         FloatingActionButton fabaddscheda=(FloatingActionButton) findViewById(R.id.fabscheda);
         Myname = (TextView)findViewById(R.id.Work_out);
+        ImageButton btinfo=(ImageButton)findViewById(R.id.btinfo);
+        btinfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                infoToast();
+            }
+        });
         fabaddscheda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,12 +83,6 @@ public class MainActivity extends AppCompatActivity {
                                 new AlertDialog.Builder (MainActivity.this)
                                         .setTitle(R.string.title_errore)
                                         .setMessage(R.string.completa)
-                                        .setNeutralButton (R.string.ok , new AlertDialog.OnClickListener()
-                                        {
-                                            public void onClick(DialogInterface dialog , int which){
-
-                                            }
-                                        })
                                         .create()
                                         .show();
                             }
@@ -184,5 +173,8 @@ public class MainActivity extends AppCompatActivity {
         else{
             noSchedeView.setVisibility(View.VISIBLE);
         }
+    }
+    public void infoToast(){
+        Toast.makeText(this,"Tap per iniziare l'allenamento \nTenere premuto per cancellare",Toast.LENGTH_LONG).show();
     }
 }

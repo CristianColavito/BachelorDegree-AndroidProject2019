@@ -12,7 +12,8 @@
         android:layout_margin="4dp"
         android:hint="@string/dialog_template_write"
         android:importantForAutofill="no"
-        android:inputType=""
+        android:inputType="textCapSentences"
+        android:textSize="16sp"
         tools:targetApi="o" />
 
     <Button

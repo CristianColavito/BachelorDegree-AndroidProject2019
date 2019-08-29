@@ -26,7 +26,7 @@ public class Exercise_Fragment extends Fragment {
         editEserc.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                eserc="";
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -40,7 +40,7 @@ public class Exercise_Fragment extends Fragment {
         editRec.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                rec="";
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -54,7 +54,7 @@ public class Exercise_Fragment extends Fragment {
         editRip.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                rip="";
             }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {

@@ -43,6 +43,7 @@
         android:ems="10"
         android:hint="@string/fragment_nome"
         android:importantForAutofill="no"
+        android:inputType="textCapSentences"
         android:textAlignment="center"
         tools:targetApi="o" />
 </FrameLayout>

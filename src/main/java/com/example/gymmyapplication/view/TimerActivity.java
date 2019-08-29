@@ -32,11 +32,12 @@ public class TimerActivity extends Activity implements OnClickListener {
     private ImageButton buttonStopTime;
     private TextView textViewShowTime,txtscheda,txteserc,txtrip;
     private CountDownTimer countDownTimer;
-    private long totalTimeCountInMilliseconds;
+    private long totalTimeCountInMilliseconds,totalTimeCountInMillisecondsbis;
+    //public int TERMINA_A_ZERO=1000;//mi serve per far arrivare a zero il timer
 
     private DBHelper db;
 
-    int rec,rip,contatore;
+    int rec,rip,riptot,contatore;
     boolean flag;
     String NomeEserc;
     List<Esercizio> ListaEsercizi;
@@ -69,14 +70,16 @@ public class TimerActivity extends Activity implements OnClickListener {
         ListaEsercizi = scheda.getEsercizi();
         rec=ListaEsercizi.get(0).Recupero;
         rip=ListaEsercizi.get(0).Ripetizioni;
+        riptot=rip;
         NomeEserc=ListaEsercizi.get(0).NomeEsercizio;
-
         setTimer(rec);
         updateCountDownText();
+
+        //setTimer(rec-1);
         setTitle(c);
         txtscheda.setText("Scheda: " + c);
-        txteserc.setText("Esercizio: "+NomeEserc);
-        txtrip.setText("Ripetizioni: " + rip);
+        txteserc.setText(NomeEserc);
+        txtrip.setText(rip+"/"+rip);
     }
 
     @Override
@@ -142,8 +145,8 @@ public class TimerActivity extends Activity implements OnClickListener {
                         flag=true;
                         rip=ListaEsercizi.get(contatore).Ripetizioni;
                         rec=ListaEsercizi.get(contatore).Recupero;
-                        txteserc.setText("Esercizio: "+ ListaEsercizi.get(contatore).NomeEsercizio);
-                        txtrip.setText("Ripetizioni: "+ rip);
+                        txteserc.setText(ListaEsercizi.get(contatore).NomeEsercizio);
+                        txtrip.setText(rip+"/"+ riptot);
                         setTimer(rec);
                         pause = true;
                         updateCountDownText();
@@ -151,7 +154,7 @@ public class TimerActivity extends Activity implements OnClickListener {
                 }
                 else{
                     setTimer(ListaEsercizi.get(contatore).Recupero);
-                    txtrip.setText("Ripetizioni: " + rip);
+                    txtrip.setText(rip+"/"+ riptot);
                     pause = true;
                     updateCountDownText();
                 }
@@ -168,14 +171,17 @@ public class TimerActivity extends Activity implements OnClickListener {
     }
     private void updateCountDownText(){
         int minutes=(int)(totalTimeCountInMilliseconds/1000)/60;
-        int seconds=(int)(totalTimeCountInMilliseconds/1000)%60;
+        int seconds=(int)((totalTimeCountInMilliseconds)/1000)%60;
+
         mProgressBar1.setProgress((int) (totalTimeCountInMilliseconds));
+        //mProgressBar1.setProgress((int) (totalTimeCountInMillisecondsbis));
         String timeleftFormatted= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         textViewShowTime.setText(timeleftFormatted);
     }
     private void setTimer(int time){
-        totalTimeCountInMilliseconds =  time * 1000;
-        mProgressBar1.setMax( time * 1000);
+        totalTimeCountInMilliseconds =  (time * 1000);
+        //totalTimeCountInMillisecondsbis=totalTimeCountInMilliseconds;
+        mProgressBar1.setMax( (time * 1000));
     }
 
     private void cambiactivity(){
