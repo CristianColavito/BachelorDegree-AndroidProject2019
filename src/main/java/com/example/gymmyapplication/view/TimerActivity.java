@@ -30,10 +30,9 @@ public class TimerActivity extends Activity implements OnClickListener {
     ProgressBar mProgressBarFinta, mProgressBar1;
     private ImageButton buttonOvale;
     private ImageButton buttonStopTime;
-    private TextView textViewShowTime,txtscheda,txteserc,txtrip;
+    private TextView textViewShowTime,txtscheda,txteserc,txtrip,textviewShowMilli;
     private CountDownTimer countDownTimer;
-    private long totalTimeCountInMilliseconds,totalTimeCountInMillisecondsbis;
-    //public int TERMINA_A_ZERO=1000;//mi serve per far arrivare a zero il timer
+    private long totalTimeCountInMilliseconds;
 
     private DBHelper db;
 
@@ -57,6 +56,7 @@ public class TimerActivity extends Activity implements OnClickListener {
         txteserc=(TextView)findViewById(R.id.textView_eserc);
         txtrip=(TextView)findViewById(R.id.textView_rip);
         textViewShowTime = (TextView) findViewById(R.id.textView_timerview_time);
+        textviewShowMilli=(TextView)findViewById(R.id.textView_millisecond);
         buttonStopTime.setOnClickListener(this);
         buttonOvale.setOnClickListener(this);
         mProgressBarFinta = (ProgressBar) findViewById(R.id.progressbar_finta);
@@ -172,15 +172,15 @@ public class TimerActivity extends Activity implements OnClickListener {
     private void updateCountDownText(){
         int minutes=(int)(totalTimeCountInMilliseconds/1000)/60;
         int seconds=(int)((totalTimeCountInMilliseconds)/1000)%60;
-
+        int millisecond=(int)(totalTimeCountInMilliseconds/10)%100;
         mProgressBar1.setProgress((int) (totalTimeCountInMilliseconds));
-        //mProgressBar1.setProgress((int) (totalTimeCountInMillisecondsbis));
         String timeleftFormatted= String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
         textViewShowTime.setText(timeleftFormatted);
+        String timeMillisecond=String.format(Locale.getDefault(),"%02d",millisecond);
+        textviewShowMilli.setText(timeMillisecond);
     }
     private void setTimer(int time){
         totalTimeCountInMilliseconds =  (time * 1000);
-        //totalTimeCountInMillisecondsbis=totalTimeCountInMilliseconds;
         mProgressBar1.setMax( (time * 1000));
     }
 
