@@ -45,7 +45,7 @@ public class Scheda {
         this.rec = rec;
     }
     public void setRip(int rip) {
-        this.rec = rip;
+        this.rip = rip;
     }
     public void setNome_scheda(String nome_scheda) {
         this.nome_scheda = nome_scheda;

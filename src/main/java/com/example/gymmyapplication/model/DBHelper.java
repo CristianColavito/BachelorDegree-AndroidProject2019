@@ -100,7 +100,7 @@ public class DBHelper extends SQLiteOpenHelper {
         for(int i=0;i<str.length;i++)
         {
             String []   strEserc=str[i].split(",");
-            Esercizio es= new Esercizio(strEserc[0],Integer.parseInt(strEserc[2]),Integer.parseInt(strEserc[2]));
+            Esercizio es= new Esercizio(strEserc[0],Integer.parseInt(strEserc[2]),Integer.parseInt(strEserc[1]));
             arrayEserc.add(es);
         }
         return arrayEserc;
